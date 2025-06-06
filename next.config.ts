@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
     scrollRestoration: true,
   },
   // Optimize page loading
+  webpack: (config, {isServer}) => {
+    config.resolve.fallback = {fs: false, net: false, tls: false};
+    return config;
+  },
   pageExtensions: ['tsx', 'ts'],
   poweredByHeader: false,
   compress: true,
